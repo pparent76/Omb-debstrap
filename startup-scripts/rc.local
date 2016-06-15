@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+
+/etc/iptables.sh
+dhclient eth0;
+su tor -c tor&
+ttdnsd -l
+su mailpile -c "cd ~/Mailpile && ./mp --www=127.0.0.1:33411/Mailpile/ --wait &"
+echo "nameserver 127.0.0.1">/etc/resolv.conf;
+
+
+exit 0

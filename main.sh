@@ -1,0 +1,75 @@
+#!/bin/bash
+chmod +x ./required_packages.sh
+chmod +x ./install-repositories.sh
+chmod +x ./make-users.sh
+chmod +x ./setup-apache.sh
+chmod +x ./setup-mailpile.sh
+chmod +x ./setup-startup.sh
+chmod +x ./setup-rng-tool.sh
+chmod +x ./cleanup.sh
+chmod +x ./setup-hostname.sh
+
+./cleanup.sh
+./required_packages.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while installing required debian packages";
+echo "Please check your apt-get config";
+exit 1;
+fi
+./install-repositories.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while installing Own-Mailbox git repositories.";
+exit 1;
+fi
+./setup-apache.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up apache.";
+exit 1;
+fi
+./make-users.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up users.";
+exit 1;
+fi
+./setup-startup.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up startup.";
+exit 1;
+fi
+./setup-rng-tool.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up rng-tools.";
+exit 1;
+fi
+./setup-hostname.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up hostname.";
+exit 1;
+fi
+
+pkill python2
+su mailpile -c ./setup-mailpile.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up mailpile.";
+exit 1;
+fi
+
+pip install -r /home/mailpile/Mailpile/requirements.txt
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up mailpile.";
+exit 1;
+fi
+
+mkdir /etc/omb/
+echo "nameserver 127.0.0.1">/etc/resolv.conf
+echo "nameserver 127.0.0.1">/etc/resolv.conf.head
+
+echo "AllowInbound 1" >> /etc/tor/torsocks.conf 
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up torsocks.";
+exit 1;
+fi
+
+echo "Rebooting in 5 seconds..."
+sleep 5;
+reboot
