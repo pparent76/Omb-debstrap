@@ -12,6 +12,6 @@ Installation instructions
 ----
 In order to install Own-Mailbox run theses commands:
 
-+git clone https://github.com/pparent76/Own-Mailbox_debian_install.git
-+cd Own-Mailbox_debian_install
-+./main.sh
++ git clone https://github.com/pparent76/Own-Mailbox_debian_install.git
++ cd Own-Mailbox_debian_install
++ ./main.sh
