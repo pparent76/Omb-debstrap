@@ -17,4 +17,7 @@ if [ "$?" -ne "0" ]; then
   exit 1;
 fi
 
+cp startup-scripts/ttdnsd-survey.sh /etc/
+chmod +x /etc/ttdnsd-survey.sh
+
 exit 0;

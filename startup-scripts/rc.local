@@ -18,6 +18,6 @@ su tor -c tor&
 ttdnsd -l
 su mailpile -c "cd ~/Mailpile && ./mp --www=127.0.0.1:33411/Mailpile/ --wait &"
 echo "nameserver 127.0.0.1">/etc/resolv.conf;
-
+/etc/ttdnsd-survey.sh >/dev/null 2>&1 &
 
 exit 0
