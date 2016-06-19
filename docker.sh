@@ -47,10 +47,10 @@ cmd_create() {
     cmd_stop
     docker rm $CONTAINER 2>/dev/null
     docker create --name=$CONTAINER \
-        -v "$(dirname $(pwd))":/own-mailbox \
+        -v "$(pwd)":/own-mailbox \
         -w /own-mailbox/ \
         -p 80:80 -p 443:443 \
-        $IMAGE /sbin/init
+        $IMAGE ./init.sh
         #--privileged=true \
 }
 
