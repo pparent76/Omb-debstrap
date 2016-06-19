@@ -18,13 +18,13 @@ In order to install Own-Mailbox run theses commands:
 
 Docker 
 ----
-It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a seperate machine.
+It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a seperate machine. You can do this on a laptop.
 
 First install docker on your machine (https://docs.docker.com/engine/installation/linux/debian/)
 
-./docker.sh build
-./docker.sh create
-./docker.sh shell
++ ./docker.sh build
++ ./docker.sh create
++ ./docker.sh shell
 
 Then you can access the web interface at the address http://localhost:8085/
 
