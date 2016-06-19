@@ -1,8 +1,8 @@
-Own-Mailbox debian install
+Own-Mailbox Debian install
 =========
-These scripts will allow you to transphorm a machine running Debian Jessie into an Own-Mailbox.
+These scripts will allow you to transform a machine running Debian Jessie into an Own-Mailbox.
 
-Pre-requisit
+Pre-requisite
 -----
 Before running these steps make sure you have a clean and fresh install of debian Jessie with no particular configuration at all (except network), that is correctly connected to your local network in dhcp.
 
@@ -18,7 +18,7 @@ In order to install Own-Mailbox run theses commands:
 
 Docker 
 ----
-It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a seperate machine. You can do this on a laptop.
+It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a separate machine. You can do this on a laptop.
 
 First install docker on your machine (https://docs.docker.com/engine/installation/linux/debian/)
 
@@ -28,6 +28,6 @@ First install docker on your machine (https://docs.docker.com/engine/installatio
 
 Then you can access the web interface at the address http://localhost:8085/
 
-Only use this for testing, not in production. It is not garanteed to have optimal security.
-For exemple iptables blocking everyhting but tor and local network do not work on docker for now.
+Only use this for testing, not in production. There is no guaranty to have optimal security.
+For example iptables blocking everything but tor and local network do not work on docker for now.
 This will most probably trigger data leaks.
