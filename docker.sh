@@ -34,7 +34,13 @@ _EOF
 
 cmd_build() {
     local dockerfile=${1:-"debian-jessie"}
-    docker build --tag=$IMAGE --file="$dockerfile" .
+
+    datestamp=$(date +%F | tr -d -)
+    nohup_out=nohup-$datestamp.out
+    rm -f $nohup_out
+    nohup nice docker build --tag=$IMAGE --file="$dockerfile" . > $nohup_out &
+    sleep 1
+    tail -f $nohup_out
 }
 
 cmd_create() {
@@ -43,6 +49,7 @@ cmd_create() {
     docker create --name=$CONTAINER \
         -v "$(dirname $(pwd))":/own-mailbox \
         -w /own-mailbox/ \
+        -p 80:80 -p 443:443 \
         $IMAGE /sbin/init
         #--privileged=true \
 }
