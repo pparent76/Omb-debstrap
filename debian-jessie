@@ -10,3 +10,6 @@ RUN cd /own-mailbox/ ; \
 COPY . /own-mailbox/
 RUN cd /own-mailbox/ ; \    
     DEBIAN_FRONTEND=noninteractive DOCKER=yes ./main.sh
+    
+RUN cp /own-mailbox/docker-files/postfix /etc/init.d/postfix    
+    

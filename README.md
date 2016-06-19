@@ -15,3 +15,19 @@ In order to install Own-Mailbox run theses commands:
 + git clone https://github.com/pparent76/Own-Mailbox_debian_install.git
 + cd Own-Mailbox_debian_install
 + ./main.sh
+
+Docker 
+----
+It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a seperate machine.
+
+First install docker on your machine (https://docs.docker.com/engine/installation/linux/debian/)
+
+./docker.sh build
+./docker.sh create
+./docker.sh shell
+
+Then you can access the web interface at the address http://localhost:8085/
+
+Only use this for testing, not in production. It is not garanteed to have optimal security.
+For exemple iptables blocking everyhting but tor and local network do not work on docker for now.
+This will most probably trigger data leaks.
