@@ -12,20 +12,22 @@ docker() {
 
 cmd_help() {
     cat <<-_EOF
-Usage: $0 ( build | create | test | start | stop | shell | erase )
+Usage: $0 ( build | create | install | start | stop | shell | erase )
 
-First build the image and create the containter:
+Build the image, create the containter, and install own-mailbox:
     $0 build [debian-jessie]
     $0 create
+    $0 install
 
-Then enter the shell of the container and install:
+Enter the shell of the container:
     $0 shell
-    git clone https://github.com/pparent76/Own-Mailbox_debian_install.git
-    cd Own-Mailbox_debian_install
-    ./main.sh
 
 When testing is done, clean up the container and the image:
     $0 erase
+
+Otherwise, stop and start it as needed:
+    $0 stop
+    $0 start
 
 _EOF
 }
@@ -39,8 +41,15 @@ cmd_create() {
     cmd_stop
     docker rm $CONTAINER 2>/dev/null
     docker create --name=$CONTAINER \
+        -v "$(dirname $(pwd))":/own-mailbox \
+        -w /own-mailbox/ \
         $IMAGE /sbin/init
         #--privileged=true \
+}
+
+cmd_install() {
+    cmd_start
+    cmd_exec ./main.sh
 }
 
 cmd_exec() {
@@ -71,6 +80,6 @@ cmd_erase() {
 # run the given command
 cmd=${1:-help} ; shift
 case $cmd in
-    help|build|create|start|stop|shell|clear) cmd_$cmd "$@" ;;
+    help|build|create|install|start|stop|shell|clear) cmd_$cmd "$@" ;;
     *) docker "$@" ;;
 esac
