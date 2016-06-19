@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 ./cleanup.sh
 ./required_packages.sh
 if [ "$?" -ne "0" ]; then

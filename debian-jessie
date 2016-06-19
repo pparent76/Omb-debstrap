@@ -1,0 +1,8 @@
+FROM debian:jessie
+
+RUN apt-get update; apt-get -y upgrade
+RUN apt-get -y install git
+
+COPY . /own-mailbox/
+RUN cd /own-mailbox/ ; \
+    DEBIAN_FRONTEND=noninteractive ./main.sh

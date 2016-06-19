@@ -13,4 +13,6 @@ if [ "$?" -ne "0" ]; then
 exit 1;
 fi
 
+/etc/init.d/mysql start
+
 exit 0;
