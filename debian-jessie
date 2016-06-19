@@ -5,4 +5,8 @@ RUN apt-get -y install git
 
 COPY . /own-mailbox/
 RUN cd /own-mailbox/ ; \
-    DEBIAN_FRONTEND=noninteractive ./main.sh
+    DEBIAN_FRONTEND=noninteractive ./required_packages.sh
+    
+COPY . /own-mailbox/
+RUN cd /own-mailbox/ ; \    
+    DEBIAN_FRONTEND=noninteractive DOCKER=yes ./main.sh

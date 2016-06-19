@@ -63,6 +63,10 @@ echo "Error while setting up torsocks.";
 exit 1;
 fi
 
-echo "Rebooting in 5 seconds..."
-sleep 5;
-reboot
+if [ "$DOCKER" != "yes" ]; then
+  echo "Rebooting in 5 seconds..."
+  sleep 5;
+  reboot
+else
+  exit 0;
+fi

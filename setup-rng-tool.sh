@@ -8,6 +8,10 @@ echo "						and without Key generation may hang forever) "
 echo "Not recommanded if you don't have a RNG hardware (may generate weak keys)."
 
 test="";
+if [ "$DEBIAN_FRONTEND" = "noninteractive" ]; then
+test="y"
+fi
+
 while [ "$test" != "y" ] && [ "$test" != "n" ];
 do
 echo "Install (y/n)?"

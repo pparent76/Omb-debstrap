@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm /etc/omb/*
+rm -rf /etc/omb/*
