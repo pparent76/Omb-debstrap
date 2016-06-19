@@ -201,18 +201,13 @@ case "$1" in
     stop)
 	log_daemon_msg "Stopping Postfix Mail Transport Agent" postfix
 	RET=0
-	# for all instances that are not already running, handle chroot setup if needed, and start
-	for INSTANCE in $(enabled_instances); do
-	    RUNNING=$(running $INSTANCE)
-	    if [ "X$RUNNING" != X ]; then
-		CMD="/usr/sbin/postmulti -i $INSTANCE -x ${DAEMON}"
-		if ! ${CMD} quiet-stop; then
-		    RET=1
-		fi
-	    fi
-	done
-	killall master
-	log_end_msg $RET
+        ret=$(ps -ae | grep "master" | wc -l)
+        if [  "$ret" -ne "0" ]; then
+        echo "Killing master"
+        killall master
+        fi
+        true
+	log_end_msg 0
     ;;
 
     restart)
