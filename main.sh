@@ -1,13 +1,4 @@
 #!/bin/bash
-chmod +x ./required_packages.sh
-chmod +x ./install-repositories.sh
-chmod +x ./make-users.sh
-chmod +x ./setup-apache.sh
-chmod +x ./setup-mailpile.sh
-chmod +x ./setup-startup.sh
-chmod +x ./setup-rng-tool.sh
-chmod +x ./cleanup.sh
-chmod +x ./setup-hostname.sh
 
 ./cleanup.sh
 ./required_packages.sh
