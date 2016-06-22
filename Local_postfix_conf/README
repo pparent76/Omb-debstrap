@@ -1,0 +1,7 @@
+This repo will allow you to auto-config postfix in order to work as expected on Own-Mailboxes.
+It will notably make sure that emails to *.omb.one recipients are delivered directly through tor.
+
+in order to install the configuration do
+
+make install
+postfix_config_hostname.sh yours.omb.one

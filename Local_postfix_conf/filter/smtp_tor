@@ -1,0 +1,5 @@
+#!/bin/bash
+
+touch /root/test
+echo "$@" >/root/test
+torsocks /usr/lib/postfix/smtp $@

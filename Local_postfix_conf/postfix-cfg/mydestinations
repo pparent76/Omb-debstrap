@@ -1,0 +1,4 @@
+/localhost\.localdomain/    ACCEPT
+/localhost/                 ACCEPT
+/.*\.omb\.one\.tor/	    ACCEPT
+/.*\.onion/	 	   ACCEPT
