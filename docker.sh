@@ -50,7 +50,7 @@ cmd_create() {
         -v "$(pwd)":/own-mailbox \
         -w /own-mailbox/ \
         -p 8085:80 \
-        $IMAGE ./init.sh
+        $IMAGE ./docker-files/init.sh
         #--privileged=true \
 }
 

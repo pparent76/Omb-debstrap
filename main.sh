@@ -9,6 +9,11 @@ echo "Error while installing required debian packages";
 echo "Please check your apt-get config";
 exit 1;
 fi
+cd Local_postfix_conf && make install && cd ..
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up postfix";
+exit 1;
+fi
 ./install-repositories.sh
 if [ "$?" -ne "0" ]; then
 echo "Error while installing Own-Mailbox git repositories.";

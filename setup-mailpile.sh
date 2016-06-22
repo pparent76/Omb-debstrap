@@ -1,8 +1,8 @@
 #!/bin/bash
 
 cd /home/mailpile/
-git clone https://github.com/pparent76/Mailpile_Own-Mailbox.git
-mv Mailpile_Own-Mailbox Mailpile
+git clone https://github.com/pparent76/Omb-Mailpile.git
+mv Omb-Mailpile Mailpile
 # move into the newly created source repo
 cd /home/mailpile/Mailpile
 
