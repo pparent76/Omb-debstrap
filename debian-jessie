@@ -2,10 +2,9 @@ FROM debian:jessie
 
 RUN apt-get update; apt-get -y upgrade
 RUN apt-get -y install git
-
-COPY . /own-mailbox/
-RUN cd /own-mailbox/ ; \
-    DEBIAN_FRONTEND=noninteractive ./required_packages.sh
+RUN apt-get install -y apt-transport-https
+RUN apt-get remove -y resolvconf openresolv network-manager
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl sudo rsyslog iptables libcurl4-openssl-dev wget build-essential postfix postfix-mysql postfix-pcre procmail apache2 mysql-server git gnupg openssh-server openssl python-virtualenv python-pip python-lxml python-dev libjpeg-dev tor torsocks dnsutils python-dev libxml2-dev libxslt1-dev zlib1g-dev python-jinja2 python-lxml python-pgpdump spambayes
     
 COPY . /own-mailbox/
 RUN cd /own-mailbox/ ; \    

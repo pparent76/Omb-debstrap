@@ -49,7 +49,7 @@ cmd_create() {
     docker create --name=$CONTAINER \
         -v "$(pwd)":/own-mailbox \
         -w /own-mailbox/ \
-        -p 8085:80 \
+        -p 8085:80  -p 4443:443 \
         $IMAGE ./docker-files/init.sh
         #--privileged=true \
 }
