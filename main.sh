@@ -62,6 +62,7 @@ mkdir /etc/omb/
 echo "nameserver 127.0.0.1">/etc/resolv.conf
 echo "nameserver 127.0.0.1">/etc/resolv.conf.head
 
+cp torrc /etc/tor/torrc
 echo "AllowInbound 1" >> /etc/tor/torsocks.conf 
 if [ "$?" -ne "0" ]; then
 echo "Error while setting up torsocks.";
