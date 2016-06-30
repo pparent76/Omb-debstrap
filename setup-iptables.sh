@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 cp startup-scripts/iptables.sh /etc/
 iptables -F
