@@ -63,6 +63,8 @@ echo "nameserver 127.0.0.1">/etc/resolv.conf
 echo "nameserver 127.0.0.1">/etc/resolv.conf.head
 
 cp torrc /etc/tor/torrc
+touch /var/log/tor.log
+chown tor /var/log/tor.log
 echo "AllowInbound 1" >> /etc/tor/torsocks.conf 
 if [ "$?" -ne "0" ]; then
 echo "Error while setting up torsocks.";
