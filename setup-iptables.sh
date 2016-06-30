@@ -1,5 +1,6 @@
 #!/bin/bash
 
+modprobe ip_tables
 cp startup-scripts/iptables.sh /etc/
 iptables -F
 ip6tables -F
