@@ -12,7 +12,6 @@ fi
 cp trusted.gpg.d/* /etc/apt/trusted.gpg.d/
 
 apt-get update
-apt-get upgrade -y
 
 if [ "$?" -ne "0" ]; then
 exit 1;

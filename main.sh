@@ -77,6 +77,8 @@ echo "Error while setting up iptables.";
 exit 1;
 fi
 
+apt-get upgrade -y
+
 if [ "$DOCKER" != "yes" ]; then
   echo "Rebooting in 5 seconds..."
   sleep 5;
