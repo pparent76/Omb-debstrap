@@ -12,12 +12,19 @@
 # By default this script does nothing.
 
 
-/etc/iptables.sh
 dhclient eth0;
 su tor -c tor&
 ttdnsd -l
 su mailpile -c "cd ~/Mailpile && ./mp --www=127.0.0.1:33411/Mailpile/ --wait &"
 echo "nameserver 127.0.0.1">/etc/resolv.conf;
 /etc/ttdnsd-survey.sh >/dev/null 2>&1 &
-
+ip=$(ifconfig eth0 | grep "inet ad" | cut -f2 -d: | awk '{print $1}')
+clear;
+printf "\033[32;1mYour local ip is $ip\033[0m\n"
+sleep 15;
+clear;
+printf "\033[32;1mYour local ip is $ip\033[0m\n"
+sleep 15;
+clear;
+printf "\033[32;1mYour local ip is $ip\033[0m\n"
 exit 0

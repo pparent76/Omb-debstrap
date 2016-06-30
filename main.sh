@@ -69,6 +69,12 @@ echo "Error while setting up torsocks.";
 exit 1;
 fi
 
+./setup-iptables.sh
+if [ "$?" -ne "0" ]; then
+echo "Error while setting up iptables.";
+exit 1;
+fi
+
 if [ "$DOCKER" != "yes" ]; then
   echo "Rebooting in 5 seconds..."
   sleep 5;
