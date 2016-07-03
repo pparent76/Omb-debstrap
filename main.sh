@@ -83,6 +83,8 @@ iptables -F
 ip6tables -F
 apt-get upgrade -y
 
+(crontab -l 2>/dev/null; echo "* * * * * sync") | crontab -
+
 if [ "$DOCKER" != "yes" ]; then
   echo "Rebooting in 5 seconds..."
   sleep 5;
