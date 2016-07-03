@@ -15,5 +15,9 @@
  if [ "$?" -ne "0" ]; then
   exit 1;
   fi
-
+ echo "OK">/var/www/OK 
+ if [ "$?" -ne "0" ]; then
+  exit 1;
+ fi
+  
 exit 0;

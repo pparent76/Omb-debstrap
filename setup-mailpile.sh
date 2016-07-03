@@ -7,7 +7,7 @@ mv Omb-Mailpile Mailpile
 cd /home/mailpile/Mailpile
 
 # Get specific revisions in order to have reproductible results
-git reset --hard f1d2c0f80c68b9c3a27cd1d4c986232a90a1a5d8
+git reset --hard a9975ae1e21bc94614d0e4efbbbb1c3384b4d84b
 if [ "$?" -ne "0" ]; then
 exit 1;
 fi

@@ -12,12 +12,24 @@
 # By default this script does nothing.
 
 
+#Connect in DHCP via interface eth0
 dhclient eth0;
+
+#Start Tor
 su tor -c tor&
-ttdnsd -l
+
+#Start Mailpile
 su mailpile -c "cd ~/Mailpile && ./mp --www=127.0.0.1:33411/Mailpile/ --wait &"
+
+#Start ttdnsd: DNS resolver over tor.
+ttdnsd -l
 echo "nameserver 127.0.0.1">/etc/resolv.conf;
+
+#Lanching survey scripts
 /etc/ttdnsd-survey.sh >/dev/null 2>&1 &
+/etc/tor-survey.sh >/dev/null 2>&1 &
+
+#Display the Ip address
 ip=$(ifconfig eth0 | grep "inet ad" | cut -f2 -d: | awk '{print $1}')
 clear;
 printf "\033[32;1mYour local ip is $ip\033[0m\n"

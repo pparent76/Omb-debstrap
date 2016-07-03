@@ -59,7 +59,6 @@ exit 1;
 fi
 
 mkdir /etc/omb/
-echo "nameserver 127.0.0.1">/etc/resolv.conf
 echo "nameserver 127.0.0.1">/etc/resolv.conf.head
 
 cp torrc /etc/tor/torrc
@@ -77,6 +76,11 @@ echo "Error while setting up iptables.";
 exit 1;
 fi
 
+#Temporarilly use google dns server and flush iptables
+#to make the upgrade will be overwritten at first startup
+echo "nameserver 8.8.8.8">/etc/resolv.conf
+iptables -F
+ip6tables -F
 apt-get upgrade -y
 
 if [ "$DOCKER" != "yes" ]; then
