@@ -4,7 +4,7 @@
 while true; do
 
 
-  hidden_service=$(cat /var/lib/tor/omb_hidden_service/hostname)
+  hidden_service=$(cat /var/lib/tor/omb_hidden_service/hostname 2>/dev/null)
   
   if [ ${#$hidden_service} -gt 15 ]; then
     #Try to connect to our Own tor hidden service    
