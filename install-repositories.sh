@@ -4,7 +4,7 @@ cd /root/
 git clone https://github.com/pparent76/Omb-ihm.git
 cd Omb-ihm
 # Get specific revisions in order to have reproductible results
-git reset --hard 6577679f54356dae6e9c08628cef1d365b43e3ed
+git reset --hard a852d610013a26357950f1a493192c3d0ecff1e3
 if [ "$?" -ne "0" ]; then
 exit 1;
 fi
