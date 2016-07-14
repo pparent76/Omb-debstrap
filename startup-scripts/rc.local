@@ -15,8 +15,25 @@
 #Connect in DHCP via interface eth0
 dhclient eth0;
 
+# On first startup we temporarily flush iptables to get correct time
+if [ ! -e "/etc/omb/set-time-first-start" ]; then
+  iptables -F
+  ip6tables -F
+  service ntp stop ; ntpdate -s ntp.univ-lyon1.fr; service ntp start
+  /etc/iptables.sh
+  touch /etc/omb/set-time-first-start
+fi
+
+
 #Start Tor
 su tor -c tor&
+
+#Wait 5 secondes so that the time is taken into account
+sleep 5;
+
+#Setting correct time
+service ntp stop ; torsocks ntpdate -s ntp.univ-lyon1.fr; service ntp start
+
 
 #Start Mailpile
 su mailpile -c "cd ~/Mailpile && ./mp --www=127.0.0.1:33411/Mailpile/ --wait &"
