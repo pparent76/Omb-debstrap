@@ -24,9 +24,6 @@ if [ "$?" -ne "0" ]; then
 exit 1;
 fi
 
-apt-get install -y python-acme -t jessie-backports
-apt-get install -y python-cryptography -t jessie-backports
-apt-get install -y python-certbot -t jessie-backports
 apt-get install -y certbot -t jessie-backports
 if [ "$?" -ne "0" ]; then
 exit 1;
