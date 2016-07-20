@@ -15,9 +15,9 @@ cp trusted.gpg.d/* /etc/apt/trusted.gpg.d/
 
 apt-get update
 
-apt-get install -y apt-transport-https
+apt-get install -y apt-utils apt-transport-https
 apt-get remove -y resolvconf openresolv network-manager
-DEBIAN_FRONTEND=noninteractive apt-get install -y curl ntpdate sudo rsyslog iptables iptables-persistent libcurl4-openssl-dev wget build-essential postfix postfix-mysql postfix-pcre procmail apache2 mysql-server git gnupg openssh-server openssl python-virtualenv python-pip python-lxml python-dev libjpeg-dev tor torsocks dnsutils python-dev libxml2-dev libxslt1-dev zlib1g-dev python-jinja2 python-lxml python-pgpdump spambayes
+DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 build-essential curl dnsutils git gnupg iptables iptables-persistent libcurl4-openssl-dev libjpeg-dev libxml2-dev libxslt1-dev mysql-server ntpdate openssh-server openssl postfix postfix-mysql postfix-pcre procmail python-dev python-jinja2 python-lxml python-pgpdump python-pip python-virtualenv rsyslog spambayes sudo tor torsocks wget zlib1g-dev
 
 apt-get install -y certbot -t jessie-backports
 
