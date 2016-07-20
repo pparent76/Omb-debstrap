@@ -10,7 +10,7 @@ cmd_help() {
     cat <<-_EOF
 Usage: $0 ( build | create | install | start | stop | shell | erase )
 
-Build the image, create the containter, and install own-mailbox:
+Build the image, create the container, and install own-mailbox:
     $0 build [debian-jessie]
     $0 create
     $0 install
@@ -45,7 +45,7 @@ cmd_create() {
     docker create --name=$CONTAINER \
         -v "$(pwd)":/own-mailbox \
         -w /own-mailbox/ \
-        -p 8085:80  -p 4443:443 \
+        -p 8085:80 -p 4443:443 \
         $IMAGE ./docker-files/init.sh
         #--privileged=true \
 }
