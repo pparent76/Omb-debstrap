@@ -1,23 +1,18 @@
 #!/bin/bash
-adduser --disabled-password --system --shell /bin/bash tor
-mkdir /home/www-data/ 
+
+set -e
+
+mkdir -p /home/www-data/
 chown www-data /home/www-data
-if [ "$?" -ne "0" ]; then
-  exit 1;
-fi
+
+adduser --disabled-password --system --shell /bin/bash tor
 chown -R tor /var/lib/tor/
-if [ "$?" -ne "0" ]; then
-  exit 1;
-fi
 
 adduser --disabled-password --system --shell /bin/bash mailpile
-mkdir /home/mailpile
+mkdir -p /home/mailpile
 chown mailpile /home/mailpile
-if [ "$?" -ne "0" ]; then
-  exit 1;
-fi
 
 touch /var/mail/mailpile
 chown mailpile /var/mail/mailpile
 
-exit 0;
+exit 0
