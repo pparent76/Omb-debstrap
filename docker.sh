@@ -6,10 +6,6 @@ cd $(dirname $0)
 IMAGE=ownmailbox-image
 CONTAINER=ownmailbox
 
-docker() {
-    sudo docker "$@"
-}
-
 cmd_help() {
     cat <<-_EOF
 Usage: $0 ( build | create | install | start | stop | shell | erase )
