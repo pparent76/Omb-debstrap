@@ -1,15 +1,12 @@
 FROM debian:jessie
 
-RUN apt-get update; apt-get -y upgrade
-RUN apt-get -y install git
-RUN apt-get install -y apt-transport-https
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y apt-utils apt-transport-https
 RUN apt-get remove -y resolvconf openresolv network-manager
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y  sudo curl rsyslog iptables libcurl4-openssl-dev wget build-essential postfix postfix-mysql postfix-pcre procmail apache2 mysql-server git gnupg openssh-server openssl python-virtualenv python-pip python-lxml python-dev libjpeg-dev tor torsocks dnsutils python-dev libxml2-dev libxslt1-dev zlib1g-dev python-jinja2 python-lxml python-pgpdump spambayes
-    
-    
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 build-essential curl dnsutils git gnupg iptables iptables-persistent libcurl4-openssl-dev libjpeg-dev libxml2-dev libxslt1-dev mysql-server ntpdate openssh-server openssl postfix postfix-mysql postfix-pcre procmail python-dev python-jinja2 python-lxml python-pgpdump python-pip python-virtualenv rsyslog spambayes sudo tor torsocks wget zlib1g-dev
+
 COPY . /own-mailbox/
-RUN cd /own-mailbox/ ; \    
+RUN cd /own-mailbox/; \
     DEBIAN_FRONTEND=noninteractive DOCKER=yes ./main.sh
-    
-RUN cp /own-mailbox/docker-files/postfix /etc/init.d/postfix    
-    
+
+RUN cp /own-mailbox/docker-files/postfix /etc/init.d/postfix
