@@ -78,7 +78,7 @@ if [ "$?" -ne "0" ]; then
 fi
 
 ./setup-iptables.sh
-if [ "$?" -ne "0" && "$DOCKER" != "yes" ]; then
+if [ "$?" -ne "0" ] && [ "$DOCKER" != "yes" ]; then
   echo "Error while setting up iptables."
   exit 1
 fi
