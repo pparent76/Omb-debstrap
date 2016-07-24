@@ -91,7 +91,7 @@ ip6tables -F
 apt-get upgrade -y
 
 # Make sure to fetch time every hour in the crontab
-(crontab -l 2>/dev/null; echo "00 * * * * service ntp stop; torsocks ntpdate -s ntp.univ-lyon1.fr; service ntp start") | crontab -
+(crontab -l 2>/dev/null; echo "00 * * * * service ntp stop; ntpdate -s ntp.univ-lyon1.fr; service ntp start") | crontab -
 
 # Make sure to sync every minute
 (crontab -l 2>/dev/null; echo "* * * * * sync") | crontab -
