@@ -6,7 +6,7 @@ cd /root/
 git clone https://github.com/pparent76/Omb-ihm.git
 cd Omb-ihm
 # Get specific revision in order to have reproducible results
- git reset --hard b296d889594946da4de2a75279c0a11b8cb2af9a
+ git reset --hard 5d9b276331dc1f01a85ba2c1c764851f4a3f9c43
 make
 
 cd /root/
