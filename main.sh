@@ -66,6 +66,7 @@ if [ "$?" -ne "0" ]; then
 fi
 
 mkdir /etc/omb/
+chown www-data /etc/omb/
 echo "nameserver 127.0.0.1" > /etc/resolv.conf.head
 
 cp torrc /etc/tor/torrc
