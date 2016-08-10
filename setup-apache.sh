@@ -14,6 +14,12 @@ cp apache2-conf/* /etc/apache2/sites-available/
 a2ensite default
 a2ensite proxy
 service apache2 restart
+
+#Clean up folders
+rm -rvf /usr/lib/cgi-bin/*
+rm -rvf /var/www/*
+
+#Add OK file
 echo "OK" > /var/www/OK
 
 exit 0

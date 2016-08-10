@@ -10,6 +10,12 @@ if [ "$?" -ne "0" ]; then
   exit 1
 fi
 
+./setup-apache.sh
+if [ "$?" -ne "0" ]; then
+  echo "Error while setting up apache."
+  exit 1
+fi
+
 cd Local_postfix_conf && make install && cd ..
 if [ "$?" -ne "0" ]; then
   echo "Error while setting up postfix."
@@ -19,12 +25,6 @@ fi
 ./install-repositories.sh
 if [ "$?" -ne "0" ]; then
   echo "Error while installing Own-Mailbox git repositories."
-  exit 1
-fi
-
-./setup-apache.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up apache."
   exit 1
 fi
 
