@@ -3,7 +3,7 @@
 set -e
 
 cd /home/mailpile/
-git clone https://github.com/pparent76/Omb-Mailpile.git
+git clone https://github.com/Own-Mailbox/Mailpile.git
 mv Omb-Mailpile Mailpile
 # Move into the newly created source repo
 cd /home/mailpile/Mailpile
