@@ -79,7 +79,7 @@ if [ "$?" -ne "0" ]; then
 fi
 
 ./setup-iptables.sh
-if [ "$?" -ne "0" ] && [ "$DOCKER" != "yes" ]; then
+if [ "$?" -ne "0" ]; then
   echo "Error while setting up iptables."
   exit 1
 fi
@@ -97,10 +97,6 @@ apt-get upgrade -y
 # Make sure to sync every minute
 (crontab -l 2>/dev/null; echo "* * * * * sync") | crontab -
 
-if [ "$DOCKER" != "yes" ]; then
-  echo "Rebooting in 5 seconds..."
-  sleep 5
-  reboot
-fi
+echo "Installation done, please reboot."
 
 exit 0

@@ -20,7 +20,7 @@ done
 
 if [ "$test" = "y" ]; then
   echo "Installing rng-tools"
-  apt-get install rng-tools || exit 1
+  apt-get -y install rng-tools || exit 1
 fi
 
 exit 0
