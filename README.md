@@ -13,3 +13,8 @@ Installation instructions
 In order to install Own-Mailbox run this command:
 
 + ./main.sh
+
+Testing with Vagrant
+----
+To test with Vagrant use `vagrant up`, `vagrant ssh`, etc.
+For more details see: https://www.vagrantup.com/docs/getting-started/
