@@ -4,6 +4,6 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get -y upgrade
     cd /vagrant/
-    ./main.sh
+    DEBIAN_FRONTEND=noninteractive ./main.sh
   SHELL
 end
