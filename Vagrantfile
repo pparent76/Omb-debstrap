@@ -1,0 +1,9 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/jessie64"
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get -y upgrade
+    cd /vagrant/
+    ./main.sh
+  SHELL
+end
