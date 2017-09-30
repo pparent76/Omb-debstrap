@@ -19,6 +19,7 @@ iptables -I  OUTPUT -p udp  --destination-port 123 -j ACCEPT
 
 service ntp stop; ntpdate -s ntp.univ-lyon1.fr; service ntp start
 
+sleep 5;
 # Start Tor
 su tor -c tor&
 
