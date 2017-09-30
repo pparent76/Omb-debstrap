@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sleep 300
+
 while true; do
 
   # Try to connect to our own tor hidden service
