@@ -1,8 +1,17 @@
 #!/bin/bash
 
-sleep 300
-
 while true; do
+
+  # sleep 300 but restart tor if the process is down
+  for i in $(seq 1 30); do
+    ps -ae | grep -v tor-survey | grep tor
+    if [ "$?" -ne "0" ]; then
+        su tor -c tor&
+    fi
+    sleep 10
+  done
+  #### end sleep 400 #########################
+
 
   # Try to connect to our own tor hidden service
   host=$(cat /var/lib/tor/omb_hidden_service/hostname 2>/dev/null)
@@ -20,7 +29,6 @@ while true; do
     killall tor
     su tor -c tor&
   fi
-
-  sleep 400
+  
 
 done
