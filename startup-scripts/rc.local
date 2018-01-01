@@ -17,8 +17,14 @@ dhclient eth0
 #Temporirly allow time request (should be removed in final versions)
 iptables -I  OUTPUT -p udp  --destination-port 123 -j ACCEPT 
 
-service ntp stop; ntpdate -s ntp.univ-lyon1.fr; service ntp start
+service ntp stop; ntpdate -s 95.81.173.155;
+ntpdate -s 163.172.10.91;
+ntpdate -s 195.154.174.209;
+ntpdate -s 92.222.227.225;
+service ntp start
 
+
+sleep 5;
 # Start Tor
 su tor -c tor&
 
