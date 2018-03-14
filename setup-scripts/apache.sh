@@ -3,14 +3,14 @@
 set -e
 
 mkdir -p /etc/letsencrypt/
-cp options-ssl-apache.conf /etc/letsencrypt/
+cp ../files/options-ssl-apache.conf /etc/letsencrypt/
 
 a2enmod proxy_http
 a2enmod cgi
 a2enmod ssl
 a2dissite "*"
 rm /etc/apache2/sites-available/*
-cp apache2-conf/* /etc/apache2/sites-available/
+cp ../files/apache2-conf/* /etc/apache2/sites-available/
 a2ensite default
 a2ensite proxy
 service apache2 restart

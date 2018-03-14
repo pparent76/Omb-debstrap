@@ -2,87 +2,60 @@
 
 set -x
 
+msg_if_failed() {
+if [ "$?" -ne "0" ]; then
+  echo $1
+  exit 1
+fi
+}
+
 ./cleanup.sh
-./required-packages.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while installing required debian packages."
-  echo "Please check your apt-get config."
-  exit 1
-fi
 
-./setup-apache.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up apache."
-  exit 1
-fi
+./setup-scripts/required-packages.sh
+msg_if_failed "Error while installing required debian packages.\n Please check your apt-get config."
 
-cd Local_postfix_conf && make install && cd ..
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up postfix."
-  exit 1
-fi
+./setup-scripts/apache.sh
+msg_if_failed "Error while setting up apache."
 
-./install-repositories.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while installing Own-Mailbox git repositories."
-  exit 1
-fi
+cd ./setup-scripts/Local_postfix_conf && make install && cd ../..
+msg_if_failed "Error while setting up postfix."
 
-./make-users.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up users."
-  exit 1
-fi
+./setup-scripts/repositories.sh
+msg_if_failed "Error while installing Own-Mailbox git repositories."
 
-./setup-startup.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up startup."
-  exit 1
-fi
+./setup-scripts/make-users.sh
+msg_if_failed "Error while setting up users."
 
-./setup-rng-tool.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up rng-tools."
-  exit 1
-fi
+./setup-scripts/startup.sh
+msg_if_failed "Error while setting up startup."
 
-./setup-hostname.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up hostname."
-  exit 1
-fi
+./setup-scripts/rng-tool.sh
+msg_if_failed  "Error while setting up rng-tools."
+
+./setup-scripts/hostname.sh
+msg_if_failed  "Error while setting up hostname."
 
 pkill python2
-su mailpile -c ./setup-mailpile.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up mailpile."
-  exit 1
-fi
+su mailpile -c ./setup-scripts/setup-mailpile.sh
+msg_if_failed  "Error while setting up mailpile."
 
 pip install -r /home/mailpile/Mailpile/requirements.txt
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up mailpile."
-  exit 1
-fi
+msg_if_failed  "Error while setting up mailpile."
+
 
 mkdir /etc/omb/
 chown www-data /etc/omb/
 echo "nameserver 127.0.0.1" > /etc/resolv.conf.head
 
-cp torrc /etc/tor/torrc
+cp files/torrc /etc/tor/torrc
 touch /var/log/tor.log
 chown tor /var/log/tor.log
-echo "AllowInbound 1" >> /etc/tor/torsocks.conf
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up torsocks."
-  exit 1
-fi
 
-./setup-iptables.sh
-if [ "$?" -ne "0" ]; then
-  echo "Error while setting up iptables."
-  exit 1
-fi
+echo "AllowInbound 1" >> /etc/tor/torsocks.conf
+msg_if_failed  "Error while setting up torsocks."
+
+./setup-scripts/iptables.sh
+msg_if_failed  "Error while setting up iptables."
 
 # Temporarily use google dns server and flush iptables
 # to make sure the upgrade will be overwritten at first startup

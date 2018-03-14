@@ -3,7 +3,7 @@
 set -e
 
 modprobe ip_tables
-cp startup-scripts/iptables.sh /etc/
+cp ../startup-scripts/iptables.sh /etc/
 iptables -F
 ip6tables -F
 /etc/iptables.sh
