@@ -20,7 +20,7 @@ msg_if_failed "Error while setting up apache."
 cd ./setup-scripts/Local_postfix_conf && make install && cd ../..
 msg_if_failed "Error while setting up postfix."
 
-./setup-scripts/repositories.sh
+./setup-scripts/install-repositories.sh
 msg_if_failed "Error while installing Own-Mailbox git repositories."
 
 ./setup-scripts/make-users.sh
@@ -36,7 +36,7 @@ msg_if_failed  "Error while setting up rng-tools."
 msg_if_failed  "Error while setting up hostname."
 
 pkill python2
-su mailpile -c ./setup-scripts/setup-mailpile.sh
+su mailpile -c ./setup-scripts/mailpile.sh
 msg_if_failed  "Error while setting up mailpile."
 
 pip install -r /home/mailpile/Mailpile/requirements.txt

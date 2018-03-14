@@ -9,7 +9,7 @@ set -e
 . ./config.sh
 
 mkdir -p /etc/letsencrypt/
-cp .files/options-ssl-apache.conf /etc/letsencrypt/
+cp files/options-ssl-apache.conf /etc/letsencrypt/
 
 a2enmod proxy_http
 a2enmod cgi

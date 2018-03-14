@@ -6,6 +6,7 @@
 ################################################
 set -e
 
+cp config.sh /root/
 cd /root/
 rm -rf ihm/
 git clone --branch alpha https://github.com/Own-Mailbox/ihm
