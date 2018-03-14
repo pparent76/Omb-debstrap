@@ -1,5 +1,9 @@
 #!/bin/bash
 
+###############################################
+#	 Save iptables into the system 
+###############################################
+
 set -e
 
 modprobe ip_tables

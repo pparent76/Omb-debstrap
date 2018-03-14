@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Setup the correct hostnme
+
 set -e
 
 echo "own-mailbox" > /etc/hostname

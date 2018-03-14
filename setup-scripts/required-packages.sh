@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#################################################
+#	Install debian packages required for omb
+#################################################
+
 set -e
 
 if ! grep "jessie-backports" /etc/apt/sources.list; then

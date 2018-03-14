@@ -1,5 +1,9 @@
 #!/bin/bash
 
+################################################
+#	Install omb sub repositories
+# (ihm, cs-com and ttdns)
+################################################
 set -e
 
 cd /root/

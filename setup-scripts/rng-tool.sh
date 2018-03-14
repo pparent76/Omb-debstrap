@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#################################################
+#	Setup hardware random number generator
+################################################
+
 echo "---------------------------------------------------------------------------------------------"
 echo "Do you want to install rng-tools?"
 echo "This will allow to use hardware accelerated random generator, to speed up GPG key generation."

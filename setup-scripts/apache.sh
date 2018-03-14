@@ -1,11 +1,12 @@
 #!/bin/bash
 
-
-#This script configures apache for Own-Mailbox.
+#########################################################################
+#This script configures apache web server for Own-Mailbox, web interface
+#########################################################################
 
 set -e
 
-. ../config.sh
+. /config.sh
 
 mkdir -p /etc/letsencrypt/
 cp ../files/options-ssl-apache.conf /etc/letsencrypt/

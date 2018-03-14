@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-. ../config.sh
+. ./config.sh
 
 set -e
 
