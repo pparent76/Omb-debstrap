@@ -14,6 +14,22 @@ In order to install Own-Mailbox run this command:
 
 + ./main.sh
 
+Testing Docker 
+-----
+It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a separate machine. You can do this on a laptop.
+
+First install docker on your machine (https://docs.docker.com/engine/installation/linux/debian/)
+
++ Docker/docker.sh build
++ Docker//docker.sh create
++ Docker//docker.sh shell
+
+Then you can access the web interface at the address http://localhost:8085/
+
+Only use this for testing, not in production. There is no guaranty to have optimal security.
+For example iptables blocking everything but tor and local network do not work on docker for now.
+This will most probably trigger data leaks.
+
 Testing with Vagrant
 ----
 To test with Vagrant use `vagrant up`, `vagrant ssh`, etc.
