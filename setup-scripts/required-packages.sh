@@ -11,7 +11,7 @@ if ! grep "security.debian.org" /etc/apt/sources.list; then
 fi
 
 # Fetch official debian keys for Raspbian
-cp ../files/trusted.gpg.d/* /etc/apt/trusted.gpg.d/
+cp files/trusted.gpg.d/* /etc/apt/trusted.gpg.d/
 
 apt-get update
 

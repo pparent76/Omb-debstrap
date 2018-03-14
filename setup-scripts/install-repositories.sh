@@ -5,6 +5,7 @@ set -e
 cd /root/
 rm -rf ihm/
 git clone --branch alpha https://github.com/Own-Mailbox/ihm
+cp config.sh ihm/omb-config.sh
 cd ihm/
 make
 

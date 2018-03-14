@@ -1,6 +1,11 @@
 #!/bin/bash
 
+
+#This script configures apache for Own-Mailbox.
+
 set -e
+
+. ../config.sh
 
 mkdir -p /etc/letsencrypt/
 cp ../files/options-ssl-apache.conf /etc/letsencrypt/
@@ -10,7 +15,11 @@ a2enmod cgi
 a2enmod ssl
 a2dissite "*"
 rm /etc/apache2/sites-available/*
-cp ../files/apache2-conf/* /etc/apache2/sites-available/
+cp files/apache2-conf/* /etc/apache2/sites-available/
+
+#Replace omb.one
+sed -i "s/omb.one/$MASTER_DOMAIN/g"  /etc/apache2/sites-available/https.conf
+
 a2ensite default
 a2ensite proxy
 service apache2 restart
