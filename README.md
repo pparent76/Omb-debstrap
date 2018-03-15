@@ -16,12 +16,16 @@ Testing with Vagrant and virtualbox
 ----
 Install vagrant and virtualbox. The following command will install your own-mailbox:
 
-*cd Vagrant
-*vagrant up
++ cd Vagrant
++ vagrant up
+
+You can access the vm web interface at:
+
+http://127.0.0.1:8080
 
 You may ssh into the vm with:
 
-*vagrant ssh
++ vagrant ssh
 
 For more details see: https://www.vagrantup.com/docs/getting-started/
 
