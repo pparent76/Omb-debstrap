@@ -72,8 +72,8 @@ for var in "$@"
 	  mysql --user="own-mailbox" --password="own-mailbox" --database="postfix"\
 	  --execute="INSERT INTO transport(address, transportation) VALUES ('$domain','smtptor:[$torhiddenservice]')"
       else
-	  if [[ $domain == *".omb.one" ]]; then
-	      echo "Could not get .onion corresponding to .omb.one dropping email" >>/tmp/log_filter;
+	  if [[ $domain == *".MASTER_DOMAIN" ]]; then
+	      echo "Could not get .onion corresponding to .MASTER_DOMAIN dropping email" >>/tmp/log_filter;
 	      echo "Could not send your email because no tor hidden service was found for $domain"| /usr/sbin/sendmail -f $2 -- $2
 	      exit;
 	  fi

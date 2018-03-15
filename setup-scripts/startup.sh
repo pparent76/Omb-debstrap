@@ -12,7 +12,7 @@ chmod +x /etc/ttdnsd-survey.sh
 chmod +x /etc/tor-survey.sh
 chmod +x /etc/rc.local
 
-#Replace omb.one
-sed -i "s/omb.one/$MASTER_DOMAIN/g"  /etc/tor-survey.sh
+#Replace MASTER_DOMAIN
+sed -i "s/MASTER_DOMAIN/$MASTER_DOMAIN/g"  /etc/tor-survey.sh
 
 exit 0

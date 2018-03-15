@@ -18,8 +18,8 @@ a2dissite "*"
 rm /etc/apache2/sites-available/*
 cp files/apache2-conf/* /etc/apache2/sites-available/
 
-#Replace omb.one
-sed -i "s/omb.one/$MASTER_DOMAIN/g"  /etc/apache2/sites-available/https.conf
+#Replace MASTER_DOMAIN
+sed -i "s/MASTER_DOMAIN/$MASTER_DOMAIN/g"  /etc/apache2/sites-available/https.conf
 
 a2ensite default
 a2ensite proxy
