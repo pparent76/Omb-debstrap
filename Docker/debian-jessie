@@ -6,7 +6,7 @@ RUN apt-get remove -y resolvconf openresolv network-manager
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 build-essential curl dnsutils git gnupg iptables iptables-persistent libcurl4-openssl-dev libjpeg-dev libxml2-dev libxslt1-dev mysql-server ntpdate openssh-server openssl postfix postfix-mysql postfix-pcre procmail python-dev python-jinja2 python-lxml python-pgpdump python-pip python-virtualenv rsyslog spambayes sudo tor torsocks wget zlib1g-dev
 
 COPY debstrap /own-mailbox/
+COPY docker-files/mysql /etc/init.d/
+COPY docker-files/postfix /etc/init.d/
 RUN cd /own-mailbox/; \
-    DEBIAN_FRONTEND=noninteractive DOCKER=yes ./main.sh
-
-RUN cp /own-mailbox/docker-files/postfix /etc/init.d/postfix
+DEBIAN_FRONTEND=noninteractive DOCKER=yes ./main.sh

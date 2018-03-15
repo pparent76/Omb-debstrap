@@ -30,7 +30,7 @@ _EOF
 
 cmd_build() {
     mkdir debstrap
-    cp -r ../main.sh ../files ../cleanup.sh ../startup-scripts ../setup-scripts debstrap/
+    cp -r ../main.sh ../files ../cleanup.sh  ../config.sh ../startup-scripts ../setup-scripts debstrap/
     local dockerfile=${1:-"debian-jessie"}
 
     datestamp=$(date +%F | tr -d -)
