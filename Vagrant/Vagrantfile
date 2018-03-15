@@ -2,6 +2,8 @@ Vagrant.configure("2") do |config|
   config.vm.box = "debian/jessie64"
   config.vm.network :forwarded_port, guest: 80, host: 8080
 
+  config.vm.provision "file", source: "../.", destination: "/tmp/own-mailbox/"
+   
   config.vm.provider "virtualbox" do |v|
     v.name = "Own-Mailbox"
     v.memory = 256
@@ -11,7 +13,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get -y upgrade
-    cd /vagrant/
+    cd /tmp/own-mailbox/
     DEBIAN_FRONTEND=noninteractive ./main.sh
   SHELL
 end

@@ -12,6 +12,19 @@ In order to install Own-Mailbox run this command:
 
 + ./main.sh
 
+Testing with Vagrant and virtualbox
+----
+Install vagrant and virtualbox. The following command will install your own-mailbox:
+
+*cd Vagrant
+*vagrant up
+
+You may ssh into the vm with:
+
+*vagrant ssh
+
+For more details see: https://www.vagrantup.com/docs/getting-started/
+
 Testing with Docker 
 -----
 It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a separate machine. You can do this on a laptop.
@@ -29,7 +42,4 @@ Only use this for testing, not in production. There is no guaranty to have optim
 For example iptables blocking everything but tor and local network do not work on docker for now.
 This will most probably trigger data leaks.
 
-Testing with Vagrant
-----
-To test with Vagrant use `vagrant up`, `vagrant ssh`, etc.
-For more details see: https://www.vagrantup.com/docs/getting-started/
+
