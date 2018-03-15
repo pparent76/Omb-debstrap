@@ -12,7 +12,7 @@ In order to install Own-Mailbox run this command:
 
 + ./main.sh
 
-Testing Docker 
+Testing with Docker 
 -----
 It is possible to do a quick test of Own-Mailbox in Docker, so that you don't need a separate machine. You can do this on a laptop.
 
