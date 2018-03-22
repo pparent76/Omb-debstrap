@@ -18,7 +18,7 @@ while true; do
 
   if [ ${#host} -le 15 ]; then
     # Try to connect to the proxy server
-    host=proxy.omb.one
+    host=proxy.MASTER_DOMAIN
   fi
 
   torsocks wget --tries=10 --timeout=45 http://$host/OK -O /tmp/wget-ok > /tmp/wget-tor-survey-res 2>&1

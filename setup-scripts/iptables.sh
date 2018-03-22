@@ -1,4 +1,22 @@
-#!/bin/sh
+#!/bin/bash
+
+###############################################
+#	 Setup and save iptables into the system 
+###############################################
+
+set -e
+
+if [ -f /.dockerenv ]; then
+    echo "Iptables don't work in docker"
+    exit 0;
+fi
+
+modprobe ip_tables
+
+
+iptables -F
+ip6tables -F
+
 
 # Accept incoming connections from local network
 iptables -A INPUT -s 127.0.0.0/8    -j ACCEPT
@@ -46,3 +64,7 @@ ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 # Drop everyhting else
 ip6tables -A INPUT -j DROP
 
+iptables-save > /etc/iptables/rules.v4
+ip6tables-save > /etc/iptables/rules.v6
+
+exit 0

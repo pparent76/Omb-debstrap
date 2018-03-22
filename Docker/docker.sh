@@ -8,7 +8,7 @@ CONTAINER=ownmailbox
 
 cmd_help() {
     cat <<-_EOF
-Usage: $0 ( build | create | install | shell | erase | start | stop )
+Usage: $0 ( build | create | install | start | stop | shell | erase )
 
 Build the image, create the container, and install own-mailbox:
     $0 build [debian-jessie]
@@ -29,6 +29,8 @@ _EOF
 }
 
 cmd_build() {
+    mkdir debstrap
+    cp -r ../main.sh ../files ../cleanup.sh  ../config.sh ../startup-scripts ../setup-scripts debstrap/
     local dockerfile=${1:-"debian-jessie"}
 
     datestamp=$(date +%F | tr -d -)
@@ -83,6 +85,6 @@ cmd_erase() {
 # run the given command
 cmd=${1:-help} ; shift
 case $cmd in
-    help|build|create|install|shell|erase|start|stop) cmd_$cmd "$@" ;;
+    help|build|create|install|start|stop|shell|clear) cmd_$cmd "$@" ;;
     *) docker "$@" ;;
 esac

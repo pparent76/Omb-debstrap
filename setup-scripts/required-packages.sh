@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#################################################
+#	Install debian packages required for omb
+#################################################
+
 set -e
 
 if ! grep "jessie-backports" /etc/apt/sources.list; then
@@ -11,7 +15,7 @@ if ! grep "security.debian.org" /etc/apt/sources.list; then
 fi
 
 # Fetch official debian keys for Raspbian
-cp trusted.gpg.d/* /etc/apt/trusted.gpg.d/
+cp files/trusted.gpg.d/* /etc/apt/trusted.gpg.d/
 
 apt-get update
 
